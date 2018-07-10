@@ -1,12 +1,12 @@
-##Reproducible Research Project
+## Reproducible Research Project
 
 
-###Unzipping/Reading data into workspace
+### Unzipping/Reading data into workspace
 ```{r}
 unzip('repdata%2Fdata%2Factivity.zip')
 actdata <- read.csv('activity.csv')
 ```
-###What is mean total number of steps taken per day?  
+### What is mean total number of steps taken per day?  
 We will first ignore the missing values denoted as NA
 
 ```{r}
@@ -26,7 +26,7 @@ median(totalstepstaken)
 We can find that mean of total number of steps taken for one day is 9354.23 steps, and its median is 10395
 
 
-###What is the average daily activity pattern?
+### What is the average daily activity pattern?
 ```{r}
 library(dplyr)
 grouped <- group_by(actdata,interval)
@@ -45,7 +45,7 @@ summarizeddata$interval[summarizeddata$msteps==max(summarizeddata$msteps)]
 
 Peak of the line graph is at interval 835.
 
-###Imputing missing values  
+### Imputing missing values  
 ```{r}
 colSums(is.na(actdata)) #only steps has NA values
 sum(is.na(actdata$steps))/length(actdata$steps)
@@ -73,7 +73,7 @@ median(totalstepstaken2)
 
 And here the values around are subtantially removed. New mean value for imputed data is 10766.19 and is same for median.
 
-###Are there differences in activity patterns between weekdays and weekends?
+### Are there differences in activity patterns between weekdays and weekends?
 ```{r}
 #Weekdays and weekends
 days <- c('Monday','Tuesday','Wednesday','Thursday','Friday')

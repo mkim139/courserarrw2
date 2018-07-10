@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<title></title>
+<title>Reproducible Research Project</title>
 
 <script type="text/javascript">
 window.onload = function() {
@@ -201,16 +201,17 @@ hr {
 </head>
 
 <body>
-<p>##Reproducible Research Project</p>
+<h2>Reproducible Research Project</h2>
 
-<p>###Unzipping/Reading data into workspace</p>
+<h3>Unzipping/Reading data into workspace</h3>
 
 <pre><code class="r">unzip(&#39;repdata%2Fdata%2Factivity.zip&#39;)
 actdata &lt;- read.csv(&#39;activity.csv&#39;)
 </code></pre>
 
-<p>###What is mean total number of steps taken per day?<br/>
-We will first ignore the missing values denoted as NA</p>
+<h3>What is mean total number of steps taken per day?</h3>
+
+<p>We will first ignore the missing values denoted as NA</p>
 
 <pre><code class="r">totalstepstaken &lt;- with(actdata,tapply(steps,date,sum,na.rm=TRUE))
 library(ggplot2)
@@ -236,7 +237,7 @@ We also see that there&#39;s considerably many days with no steps, probabily due
 
 <p>We can find that mean of total number of steps taken for one day is 9354.23 steps, and its median is 10395</p>
 
-<p>###What is the average daily activity pattern?</p>
+<h3>What is the average daily activity pattern?</h3>
 
 <pre><code class="r">library(dplyr)
 grouped &lt;- group_by(actdata,interval)
@@ -277,7 +278,7 @@ summarizeddata$interval[summarizeddata$msteps==max(summarizeddata$msteps)]
 
 <p>Peak of the line graph is at interval 835.</p>
 
-<p>###Imputing missing values  </p>
+<h3>Imputing missing values</h3>
 
 <pre><code class="r">colSums(is.na(actdata)) #only steps has NA values
 </code></pre>
@@ -325,7 +326,7 @@ qplot(totalstepstaken2,binwidth=2000,main=&#39;Histogram of Total Steps taken fo
 
 <p>And here the values around are subtantially removed. New mean value for imputed data is 10766.19 and is same for median.</p>
 
-<p>###Are there differences in activity patterns between weekdays and weekends?</p>
+<h3>Are there differences in activity patterns between weekdays and weekends?</h3>
 
 <pre><code class="r">#Weekdays and weekends
 days &lt;- c(&#39;Monday&#39;,&#39;Tuesday&#39;,&#39;Wednesday&#39;,&#39;Thursday&#39;,&#39;Friday&#39;)
